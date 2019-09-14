@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title >Barcelona Secrets!</title>
+    <link rel="stylesheet" href="style.css" >
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+</head>
+<body ng-app="myApp" ng-controller="indexController">
+
+    <!-- load angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.js"></script>
+    <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
+    <!-- load app -->
+    <script src="app.js"></script>
+
+    <!-- load bootstrap-->
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
+
+    <!-- load controllers -->
+    <script src="pages/home/homeController.js"></script>
+    <script src="pages/poi/poiController.js"></script>
+    <script src="pages/register/registerController.js"></script>
+    <script src="pages/login/loginController.js"></script>
+    <script src="pages/favourites/favouritesController.js"></script>
+
+
+    <!-- the website -->
+    <section class="pageHeader" >
+        <img src="Resources/Barcelona.jpg" width=100% height=60%>
+    </section>
+    <!-- menu -->
+    <nav class="menu">
+        <!-- welcome our guest -->
+        <li  id="loggedUser"> <b>Hello {{ getUserName() }}!</b></li>
+        <li  ng-show="!isUserLoggedIn()"> <a href="#!home">Home</a></li>
+        <li  ng-show= "isUserLoggedIn()"> <a href="#!loggedUserHome" >Home</a></li>
+        <li> <a href="#!about">About</a></li>
+        <li> <a href="#!poi">POI</a></li>
+        <li id="logout"> <a ng-click="logOut()" ng-show="isUserLoggedIn()">Log out</a></li>
+    </nav>
+    <!-- This section changes as the hashbang changes -->
+    <div ng-view></div>
+</body>
+</html>

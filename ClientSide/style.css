@@ -1,0 +1,249 @@
+.menu{
+  background-color: #c9e0e8 ;
+  border-bottom:1px black;
+  border-style:outset;
+  align-items: center;
+}
+
+.menu li
+{
+  display:inline;
+  align-content: center;
+}
+.menu li a
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  text-decoration: none;
+  color:black;
+  display: inline-block;
+  padding: 1.5% 1.5%;
+  border-radius: 10px;
+  /*border-bottom: 5px solid white;*/
+}
+.menu a:hover
+{
+  background: rgba(255, 255, 255, 0.747);
+  color:black;
+}
+#loggedUser{
+  color: black;
+}
+
+.c{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+
+}
+/* .menu #logout{
+  float: right;
+
+} */
+
+.header-img-container{
+  width: 100%;
+}
+
+#video{
+  width: 100%;
+
+}
+
+.favorImageContainer ,.poiImage {
+    position: relative;
+    width: 30%;
+  }
+  
+  /* Make the image responsive */
+  .favorImageContainer img, .poiImage img  {
+    width: 100%;
+    height: auto;
+  }
+  
+  .poiImage .saveFavorite{
+    position: absolute;
+    top: 12%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgba(240, 236, 231, 0.966);
+    color: rgb(207, 24, 63);
+    padding: 6px 6px;
+    border-color: black;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  /* Style the button and place it in the middle of the container/image */
+  .favorImageContainer .removeFavButton {
+    position: absolute;
+    top: 20%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    padding: 8px 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .favorImageContainer .removeFavButton:hover {
+    background-color: pink;
+  }
+
+  /* design rate in modal window */
+  .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+  }
+  .rate:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+  }
+  .rate:not(:checked) > label {
+      float:right;
+      width:1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:30px;
+      color:#ccc;
+  }
+  .rate:not(:checked) > label:before {
+      content: '★ ';
+  }
+  .rate > input:checked ~ label {
+      color: rgb(228, 144, 176);    
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+      color: rgb(228, 144, 176);  
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+      color: rgb(228, 144, 176);
+  }
+
+  .modal-body{
+    position: relative;
+    display: table; /* <-- This makes the trick */
+    overflow-y: auto;
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;
+}
+
+.flex-container{
+  display: flex;
+  margin-left: 10%;
+}
+
+.flex-container > span {
+  border-radius: 10px;
+  border: 1px solid white	;
+  background-color: #f1f1f1;
+  margin: 20px;
+  padding: 5px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  align-content: center;
+}
+
+.flex-container> span img{
+  border-radius: 10px;
+}
+
+.flex-container>span:hover{
+  opacity: 0.85;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  transform: scale(1.2);
+}
+
+/* home design */
+#randomePoints, #lastSavedPois, #recommendedPoiForUser{
+  background-color:#c9e0e8	;
+  border-color:black;
+  -webkit-filter: brightness(105%); /* Safari */
+  filter: brightness(105%);
+}
+
+#userPOIMenu li, #favouritesMenu li{
+  display:block;
+  float:left;
+  /* height:150px;  */
+  padding: 10px;
+}
+
+.loginField{
+  float: left;
+  margin:10px;
+}
+
+.loginField input[type=text], #userPOIMenu li input,#userPOIMenu li select, #favouritesMenu li select{
+  border-radius: 5px;
+  padding:5px;
+  background-color:#e8effa;
+}
+
+.loginField input[type=text]:focus {
+  border: 0.5px solid black;
+}
+#userPOIMenu li button, #favouritesMenu li button{
+  border-radius: 5px;
+  padding:10x;
+  background-color:#e8effa;
+  height: 6%;
+}
+.loginField input[type=submit],td .buttonReview{
+  border-radius: 5px;
+  padding:10x;
+  background-color:#e8effa;
+  height: 7%;
+}
+
+#poiDetModal .modal-header{
+  background-color: mistyrose;
+}
+#poiDetModal .modal-footer button{
+  background-color: lightgray;
+}
+
+ table {
+   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center; 
+  vertical-align: middle;
+}
+ 
+
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  color: white;
+}
+ tr:hover {background-color: #ddd;}
+
+
+#about, #registerPage, #retrievePasswordPage{
+  background-color: #e8effa;
+}
+#imageSection img{
+  max-width: 600px;
+}

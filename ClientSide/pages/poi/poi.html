@@ -1,0 +1,82 @@
+<div ng-include="'pages/poiDet_modal.html'"></div>
+ <h2>POI</h2>
+
+<div name="user options regarding the poi">
+  <ul id="userPOIMenu">
+    <li><label>Search: <input ng-model="search.POIname"></label>
+    </li>
+    <li> Filter:
+      <select ng-model="selectedCategory"
+        ng-options="category.CategoryName as category.CategoryName for category in categories">
+        <option value="">--choose category--</option>
+      </select>
+    </li>
+    <li><button name="sort" ng-click="handleSortClicked()">{{toggleSortButtonText}} </button>
+    </li>
+    <li id="favouritesLink" ng-show="isUserLoggedIn()" ><a href=#!favourites ng-model="numOfFavorites" >Favorites ({{numOfFavorites}})</a></li>
+  </ul>
+</div>
+
+<div name="POIS dispaly">
+  <table ng-show="(allPOIs| filter:search).length" id="searchObjResults">
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Category</th>
+      <th ng-show="isUserLoggedIn()">Registered Only</th>
+    </tr>
+    <tr
+      ng-repeat="poi in allPOIs | orderBy:sort() | filter:search| filter:(!!selectedCategory || undefined)  && {CategoryName : selectedCategory}">
+      <td><a href id={{poi.POIid}} ng-click="showDet($event)" data-toggle="modal"  data-target="#poiDetModal">{{poi.POIname}}</a></td>
+      <td class="poiImage">
+          <img id={{poi.POIid}} ng-click="showDet($event)" data-toggle="modal"  data-target="#poiDetModal" ng-src={{poi.POIimage}} width="250px" height="150px">
+        <button class="saveFavorite" ng-show="isUserLoggedIn()" ng-click="addOrRemoveFavorite(poi.POIid, poi.POIname, poi.POIimage, poi.CategoryName, poi.POIaverageRank)">
+            <i class={{chooseImage(poi.Favorite)}}></i> 
+        </button>
+        <!-- <img ng-src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;"> -->
+
+      </td>
+      <td>{{ poi.CategoryName }}</td>
+      <td class="buttonReview" ng-show="isUserLoggedIn()"><button type="button" id={{poi.POIid}} data-toggle="modal"
+          data-target="#reviewModal" ng-click="passPOIid($event)" >review this</button></td>
+    </tr>
+  </table>
+  <label ng-show="!(allPOIs| filter:search).length">no results were found!</label>
+</div>
+
+<div class="modal fade" id="reviewModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Review me</h4>
+      </div>
+      <div class="modal-body">
+        <div class="rate">
+          Your rank:
+          <input type="radio" ng-model="userRating" id="star5" name="rate" value="5" />
+          <label for="star5" title="5">5 stars</label>
+          <input type="radio" ng-model="userRating" id="star4" name="rate" value="4" />
+          <label for="star4" title="4">4 stars</label>
+          <input type="radio" ng-model="userRating" id="star3" name="rate" value="3" />
+          <label for="star3" title="3">3 stars</label>
+          <input type="radio" ng-model="userRating" id="star2" name="rate" value="2" />
+          <label for="star2" title="2">2 stars</label>
+          <input type="radio" ng-model="userRating" id="star1" name="rate" value="1" />
+          <label for="star1" title="1">1 star</label>
+        </div>
+        <br><br><br>
+        <div class="content" >
+          Your review:
+          <textarea id="userContentInput" ng-model="user_review"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="saveReview()">send</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>

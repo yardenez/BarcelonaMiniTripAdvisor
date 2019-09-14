@@ -1,0 +1,32 @@
+<div ng-include="'pages/poiDet_modal.html'"></div>
+
+<div id="guestPage" >
+    <form class="login_form" name="loginForm" ng-submit="login()" novalidate>
+        <!--Todo: add validators and errors description for min length, max length and pattern -->
+        <p class="loginField">
+            <i class="material-icons">person</i>
+            <input type="text" name="username" ng-model="username" placeholder="username" required>
+        </p>
+        <p class="loginField">
+            <i class="material-icons">lock</i>
+            <input type="text" name="password" ng-model="password" placeholder="password" required>
+        </p>
+        <p class="loginField">
+        <input ng-disabled="loginForm.username.$invalid || loginForm.password.$invalid" type="submit" id="login"
+            value="Login"><br/>
+        </p>
+    </form><br/><br/><br/><br/>
+    <a id="registerLink" href="#!register">Don't have a user yet? Press here to register!</a><br/>
+    <a id="retrieveLink" href="#!retrievePassword">Forgot password? click here</a>
+</div>
+
+<div id="randomePoints">
+    <br>
+    <h3 style="font-family: 'Courier New', Courier, monospace"> Popular POIs</h3>
+    <div class="flex-container">
+        <span  ng-repeat="poi in randomePOIs">
+                <img  ng-click="showDet($event)" data-toggle="modal"  data-target="#poiDetModal" id={{poi.POIid}} ng-src={{poi.POIimage}} width="250px" height="150px">
+                <div class="desc"><a href ng-click="showDet($event)" data-toggle="modal"  data-target="#poiDetModal" id={{poi.POIid}}>{{poi.POIname}}</a></div>
+        </span>
+    </div>
+</div>

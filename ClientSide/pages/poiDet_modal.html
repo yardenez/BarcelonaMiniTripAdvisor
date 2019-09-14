@@ -1,0 +1,30 @@
+<div class="modal fade" id="poiDetModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 ng-model="modal_title">{{model_title}}</h4>
+        <button ng-show="isUserLoggedIn() && isPOIInFavourite" ng-click="removeFavourite()">remove from favourites</button>
+        <button ng-show="isUserLoggedIn() && !isPOIInFavourite" ng-click="addFavourite()">add to favourites</button>
+
+      </div>
+      <div class="modal-body">
+        <div>{{model_content}}</div>
+        <div>
+          <label>POI average rank:</label>{{model_averagePoiRank}}%
+        <div>
+          <label> Numbef of viewers:</label>{{model_numViewers}}
+        </div>
+        <div>
+          <label>Last reviews:</label><br />
+          <p ng-show="model_first_review">{{model_first_review}}</p>
+          <p ng-show="model_second_review">{{model_second_review}}</p>
+          <p ng-show="!model_first_review && !model_second_review">No reviews yet</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"  data-dismiss="modal" ng-click="close()">close</button>
+      </div>
+    </div>
+  </div>
+</div>

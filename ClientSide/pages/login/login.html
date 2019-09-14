@@ -1,0 +1,25 @@
+<div ng-include="'pages/poiDet_modal.html'"></div>
+
+ <!-- pagen shown for logged users -->
+ <div id="loggedUserPage" ng-show="isUserLoggedIn()">
+        <div id="recommendedPoiForUser">
+        <h3 style="font-family: 'Courier New', Courier, monospace">Recommended</h3>
+                <div class="flex-container">
+                        <span ng-repeat="poi in recommendedPOIs">
+                                <img id={{poi.POIid}} data-toggle="modal" data-target="#poiDetModal" 
+                                ng-click="showDet($event)" ng-src={{poi.POIimage}} width="250px" height="150px">
+                                <div class="desc"><a href id={{poi.POIid}}  ng-click="showDet($event)" data-toggle="modal"
+                                data-target="#poiDetModal">{{poi.POIname}}</a></div>
+                        </span>
+                </div>
+        </div>
+        <div id="lastSavedPois">
+        <h3 style="font-family: 'Courier New', Courier, monospace">Last Saved</h3>
+                <div class="flex-container">
+                        <span ng-repeat="poi in lastSavedPOIs">
+                                <img id={{poi.POIid}} ng-click="showDet($event)"  data-toggle="modal"  data-target="#poiDetModal" ng-src={{poi.POIimage}} width="250px" height="150px">
+                                <div class="desc"><a href id={{poi.POIid}}  ng-click="showDet($event)"  data-toggle="modal" data-target="#poiDetModal">{{poi.POIname}}</a></div>
+                        </span>
+                </div>
+        </div>
+</div>

@@ -1,0 +1,125 @@
+
+<div id="registerPage">
+    <h2>Register</h2>
+
+    <div class="homeContent" id="register">
+        <form name="registerForm" ng-submit="register()" novalidate>
+            <!--Todo: add validators and errors description for min length, max length and pattern -->
+            <div class="form-group">
+                <label>Username:</label> <br />
+                <div id="fields">
+                    <input type="text" name="reg_username" ng-model="reg_username" required ng-maxlength="8"
+                        ng-minlength="3" ng-pattern="/^[a-zA-Z]*$/">
+                    <span ng-show="registerForm.reg_username.$error.required">This field is required! </span>
+                    <span ng-show="registerForm.reg_username.$error.maxlength">Maximum length is 8. </span>
+                    <span ng-show="registerForm.reg_username.$error.minlength">Minimum length is 3. </span>
+                    <span ng-show="registerForm.reg_username.$error.pattern">Please enter letters only!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <div id="fields">
+                    <input type="text" name="reg_password" ng-model="reg_password" required ng-maxlength="10"
+                        ng-minlength="5" ng-pattern="/^[a-zA-Z0-9]*$/">
+                    <span ng-show="registerForm.reg_password.$error.required">This field is required! </span>
+                    <span ng-show="registerForm.reg_password.$error.maxlength">Maximum length is 10. </span>
+                    <span ng-show="registerForm.reg_password.$error.minlength">Minimum length is 5. </span>
+                    <span ng-show="registerForm.reg_password.$error.pattern">Please enter letters and numbers only!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> First name:</label>
+                <div id="fields">
+                    <input type="text" name="reg_firstName" ng-model="reg_firstName" required>
+                    <span ng-show="registerForm.reg_firstName.$error.required">This field is required! </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Last name:</label>
+                <div id="fields">
+                    <input type="text" name="reg_lastName" ng-model="reg_lastName" required>
+                    <span ng-show="registerForm.reg_lastName.$error.required">This field is required! </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Email:</label>
+                <div id="fields">
+                    <input type="email" name="reg_email" ng-model="reg_email" required ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/">
+                    <span ng-show="registerForm.reg_email.$error.required">This field is required! </span>
+                    <span ng-show="registerForm.reg_email.$error.pattern">Please enter a valid email! e.g. name@domain.com
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> City:</label>
+                <div id="fields">
+                    <input type="text" name="reg_city" ng-model="reg_city" required>
+                    <span ng-show="registerForm.reg_city.$error.required">This field is required! </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Country: </label>
+                <div id="fields">
+                    <select ng-model="countrySelect" name="countrySelect" ng-options="o for o in countryList" required>
+                        <option value="">--choose country--</option>
+                    </select>
+                    <span ng-show="registerForm.countrySelect.$error.required">This field is required! </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interests:</label>
+                <br />
+                <label>Please choose at least two categories (Hold down ctrl button to select multiple options)</label>
+                <div id="fields">
+                    <select ng-model="categories"name="categories" multiple ng-options=" o.CategoryName for o in categoryList"
+                        required></select>
+                    <span ng-show="registerForm.categories.$error.required">This field is required! </span>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Question1:</label>
+                <div id="fields">
+                    <select ng-model="questionSelect1" name="questionSelect1" ng-options=" o.QuestionValue for o in questionList" required>
+                        <option value="">--choose first question--</option>
+                    </select>
+                    <span ng-show="registerForm.questionSelect1.$error.required">This field is required! </span>
+                </div>
+                <label> Answer1: </label>
+                <div id="fields">
+                    <input type="text" name="reg_answer1" ng-model="reg_answer1" required>
+                    <span ng-show="registerForm.reg_answer1.$error.required">This field is required! </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Question2: </label>
+                <div id="fields">
+                    <select ng-model="questionSelect2" name="questionSelect2" ng-options=" o.QuestionValue for o in questionList" required>
+                        <option value="">--choose first question--</option>
+                    </select>
+                    <span ng-show="registerForm.questionSelect2.$error.required">This field is required! </span>
+
+                </div>
+                <label> Answer2: </label>
+                <div id="fields">
+                    <input type="text" name="reg_answer2" ng-model="reg_answer2" required>
+                    <span ng-show="registerForm.reg_answer2.$error.required">This field is required! </span>
+
+                </div>
+            </div>
+            <!-- submit button -->
+            <input ng-disabled="registerForm.$invalid" type="submit" id="register" value="Register">
+        </form>
+
+    </div>
+
+    <style>
+        input.ng-invalid {
+            background-color: pink;
+        }
+
+        input.ng-valid {
+            background-color: lightgreen;
+        }
+    </style>
+</div>
